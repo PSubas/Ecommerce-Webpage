@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { CacheProvider } from "@emotion/react";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
@@ -20,7 +19,8 @@ import "/public/assets/styles/singleProduct.css";
 import "/public/assets/styles/footer.css";
 import { Store } from "../redux/store/store";
 import { Provider } from "react-redux";
-import Footer from "src/components/Footer";
+import Page from ".";
+
 import { ErrorBoundary } from "react-error-boundary";
 
 const clientSideEmotionCache = createEmotionCache();
@@ -36,29 +36,28 @@ const App = (props) => {
 
   const theme = createTheme();
 
-  
-
   return (
-    // <ErrorBoundary fallback={<h1>Something went wrong.</h1>}>
-    <Provider store={Store}>
-      <CacheProvider value={emotionCache}>
-        <LocalizationProvider dateAdapter={AdapterDateFns}>
-          <AuthProvider>
-            <ThemeProvider theme={theme}>
-              <CssBaseline />
-              <AuthConsumer>
-                {(auth) =>
-                  auth.isLoading ? <SplashScreen /> : getLayout(<Component {...pageProps} />)
-                }
-              </AuthConsumer>
-            </ThemeProvider>
-          </AuthProvider>
-        </LocalizationProvider>
+    <ErrorBoundary fallback={<h1>Something went wrong.</h1>}>
+      <Provider store={Store}>
+        <CacheProvider value={emotionCache}>
+          <LocalizationProvider dateAdapter={AdapterDateFns}>
+            <AuthProvider>
+              <ThemeProvider theme={theme}>
+                <CssBaseline />
+                <AuthConsumer>
+                  {(auth) =>
+                    auth.isLoading ? <SplashScreen /> : getLayout(<Component {...pageProps} />)
+                  }
+                </AuthConsumer>
+                {/* <Page /> */}
+              </ThemeProvider>
+            </AuthProvider>
+          </LocalizationProvider>
 
-        <ToastContainer />
-      </CacheProvider>
-    </Provider>
-    // </ErrorBoundary>
+          <ToastContainer />
+        </CacheProvider>
+      </Provider>
+    </ErrorBoundary>
   );
 };
 

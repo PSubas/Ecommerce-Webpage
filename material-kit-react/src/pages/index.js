@@ -4,6 +4,7 @@ import LandingCarauselComponent from "../components/carausel/Carausel";
 import HomePage from "src/components/homePage";
 import { FiShoppingCart } from "react-icons/fi";
 import Footer from "src/components/Footer";
+import Services from "src/components/Services";
 const now = new Date();
 
 const Page = () => (
@@ -14,6 +15,7 @@ const Page = () => (
 
     <LandingCarauselComponent />
     <HomePage />
+    <Services />
     <Footer />
   </>
 );

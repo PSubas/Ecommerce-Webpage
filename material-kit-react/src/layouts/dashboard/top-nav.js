@@ -70,7 +70,7 @@ export const TopNav = (props) => {
             </Tooltip>
           </Stack>
           <Stack alignItems="center" direction="row" spacing={2}>
-            <Tooltip title="Cart">
+            {/* <Tooltip title="Cart">
               <IconButton>
                 <Badge badgeContent={4} color="secondary">
                   <SvgIcon fontSize="medium">
@@ -78,7 +78,7 @@ export const TopNav = (props) => {
                   </SvgIcon>
                 </Badge>
               </IconButton>
-            </Tooltip>
+            </Tooltip> */}
             <Avatar
               onClick={accountPopover.handleOpen}
               ref={accountPopover.anchorRef}
